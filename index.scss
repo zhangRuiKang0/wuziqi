@@ -1,0 +1,154 @@
+html{
+	overflow: hidden;
+
+}
+body{
+	font-family: sans-serif;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+}
+%center{
+	position: absolute;
+	top:0;
+	left: 0;
+	right:0;
+	bottom:0;
+	margin: auto;
+}
+.contain{
+	@extend %center;
+	width: 100%;
+	height: 100%;
+	background: url(wuziqi.jpg)no-repeat center center;
+
+}
+$width:500px;
+.contain .qipan{
+	@extend %center;
+	width: $width;
+	height: $width;
+	background: rgba(219,219,219,0.8);
+	.qizi{
+		float: left;
+		width: $width/15-$width/60;
+		height: $width/15-$width/60;
+		border-radius: 50%;
+		margin: $width/120;	
+		position: relative;
+		z-index: 2;
+	}
+	.qizi.bai{
+		background: #fff;
+	}
+	.qizi.hei{
+		background: #000;
+	}
+	b{
+		display: block;
+		position: absolute;
+		height: 1px;
+		left: $width/30;
+		background: #000;
+		width:$width/1-$width/15;
+        animation:hang 0.3s ease forwards;
+       opacity: 0;
+
+	}
+	i{
+		display: block;
+		position: absolute;
+		top:$width/30;
+		width: 1px;
+		background: black;
+		height:$width/1-$width/15;
+       animation:shu 0.3s ease forwards;
+       opacity: 0;
+	}
+}
+@for $i from 0 through 14{
+	.qipan b:nth-of-type(#{$i+1}){
+		top:$width/30+$i*$width/15;
+		animation-delay:$i*0.03s;		
+	};
+	.qipan i:nth-of-type(#{$i+1}){
+		left:$width/30+$i*$width/15;
+		animation-delay:$i*0.03s;		
+	}
+}
+.contain .qipan span{
+	display: block;
+	width: $width/80;
+	height: $width/80;
+	background: black;
+	position: absolute;
+	border-radius: 50%;	
+    opacity: 0;
+    animation:diao 1s ease forwards;
+	@for $i from 1 through 5{
+		&:nth-of-type(#{$i}){
+		animation-delay:$i*0.06s;		
+		}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+	&:nth-of-type(1){
+		top:3.5*$width/15;
+		left:3.5*$width/15;
+	}
+	&:nth-of-type(2){
+		top:3.5*$width/15;
+		left:11.5*$width/15;
+	}
+	&:nth-of-type(3){
+		top:7.5*$width/15;
+		left:7.5*$width/15;
+	}
+	&:nth-of-type(4){
+		top:11.5*$width/15;
+		left:3.5*$width/15;
+	}
+	&:nth-of-type(5){
+		top:11.5*$width/15;
+		left:11.5*$width/15;
+	}
+}
+}
+@keyframes diao{
+	0%{
+		transform:translateY(-1000px);
+	    opacity: 0;	
+        
+		}
+		
+	100%{
+		transform:translateY(0px);
+	     opacity: 1;	
+    transform:translate3d(-45%,-45%,0);
+		
+	}
+}
+@keyframes hang{
+	0%{
+		transform:translate3d(-1000px,0,0);
+	    opacity: 0;	
+
+	}
+	100%{
+		transform:translate3d(0,0,0);
+	    opacity: 1;	
+
+	}
+}
+@keyframes shu{
+	0%{
+		transform:translate3d(0,-1000px,0);
+	    opacity: 0;	
+
+	}
+	100%{
+		transform:translate3d(0,0,0);
+	    opacity: 1;	
+
+	}
+}
+
